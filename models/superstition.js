@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Superstition.belongsTo(models.Profile, { foreignKey: 'ProfileId'})
+      Superstition.belongsTo(models.Profile, { foreignKey: 'profileId'})
     }
   }
   Superstition.init({
@@ -30,7 +30,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false, 
     },
     category: {
       type: DataTypes.STRING
