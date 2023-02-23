@@ -30,8 +30,19 @@ async function update(req, res) {
   }
 }
 
+async function deleteSuperstition(req, res) {
+  try {
+    const superstition = await Superstition.findByPk(req.params.id)
+    await superstition.destroy()
+    res.status(200).json(superstition)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
   index,
   update,
+  delete: deleteSuperstition,
 }

@@ -12,6 +12,6 @@ router.get('/', superstitionsCtrl.index)
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, superstitionsCtrl.create)
 router.put('/:id', checkAuth, superstitionsCtrl.update)
-
+router.delete('/:id', checkAuth, superstitionsCtrl.delete)
 
 module.exports = router
