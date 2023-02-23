@@ -10,6 +10,16 @@ async function create(req, res) {
   }
 }
 
+async function index(req, res) {
+  try {
+    const superstitions = await Superstition.findAll()
+    res.status(200).json(superstitions)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
+  index,
 }
