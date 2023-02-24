@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       Comment.belongsTo(models.Superstition, {
         foreignKey: 'superstitionId',
       })
+      Comment.belongsTo(models.Profile, {
+        foreignKey: 'profileId',
+      })
     }
   }
   Comment.init({
@@ -28,7 +31,16 @@ module.exports = (sequelize, DataTypes) => {
         model: 'Superstitions',
         key: 'id'
       },
-    }
+    },
+    profileId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      onDelete: 'CASCADE',
+      references: {
+        model: 'Profiles',
+        key: 'id',
+      },
+    },
   }, {
     sequelize,
     modelName: 'Comment',
