@@ -1,34 +1,29 @@
 'use strict';
+
+const superstitions = require('../controllers/superstitions');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Superstitions', {
+    await queryInterface.createTable('Comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      text: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      profileId: {
+      superstitionId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'Profiles',
+          model: 'Superstitions',
           key: 'id',
-        },
-      },
-      description: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      category: {
-        type: Sequelize.STRING,
-        allowNull: false
+        }
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Superstitions');
+    await queryInterface.dropTable('Comments');
   }
 };

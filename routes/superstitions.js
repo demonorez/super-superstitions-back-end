@@ -13,5 +13,6 @@ router.use(decodeUserFromToken)
 router.post('/', checkAuth, superstitionsCtrl.create)
 router.put('/:id', checkAuth, superstitionsCtrl.update)
 router.delete('/:id', checkAuth, superstitionsCtrl.delete)
+router.post('/:id/comments', checkAuth, superstitionsCtrl.addComment)
 
 module.exports = router
