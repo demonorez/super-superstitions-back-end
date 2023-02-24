@@ -1,8 +1,9 @@
-const { Superstition, Comment } = require('../models')
+const { Superstition, Profile, Comment } = require('../models')
 // const { Profile } = require('../models')
 
 async function create(req, res) {
   try {
+    req.body.profileId = req.user.profile.id
     const superstition = await Superstition.create(req.body)
     res.status(200).json(superstition)
   } catch (error) {
@@ -24,8 +25,10 @@ async function index(req, res) {
 async function update(req, res) {
   try {
     const superstition = await Superstition.findByPk(req.params.id)
+    if (superstition.profileId === req.user.profile.id){
     superstition.set(req.body)
     await superstition.save()
+    }
     res.status(200).json(superstition)
   } catch (error) {
     res.status(500).json(error)
@@ -35,7 +38,9 @@ async function update(req, res) {
 async function deleteSuperstition(req, res) {
   try {
     const superstition = await Superstition.findByPk(req.params.id)
+    if (superstition.profileId === req.user.profile.id){
     await superstition.destroy()
+    }
     res.status(200).json(superstition)
   } catch (error) {
     res.status(500).json(error)
@@ -53,6 +58,8 @@ async function addComment(req, res) {
     res.status(500).json(error)
   }
 }
+
+
 
 module.exports = {
   create,
