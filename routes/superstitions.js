@@ -14,5 +14,6 @@ router.post('/', checkAuth, superstitionsCtrl.create)
 router.put('/:id', checkAuth, superstitionsCtrl.update)
 router.delete('/:id', checkAuth, superstitionsCtrl.delete)
 router.post('/:id/comments', checkAuth, superstitionsCtrl.addComment)
+router.put('/:id/comments/:commentId', checkAuth, superstitionsCtrl.editComment)
 
 module.exports = router
