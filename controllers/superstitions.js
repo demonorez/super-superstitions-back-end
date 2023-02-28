@@ -1,5 +1,5 @@
-const { Superstition, Profile, Comment } = require('../models')
-const comment = require('../models/comment')
+const { Superstition, Comment } = require('../models')
+
 
 async function create(req, res) {
   try {
