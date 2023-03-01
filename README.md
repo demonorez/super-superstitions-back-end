@@ -1,0 +1,1 @@
+This is the back end of the application. Please click [here](https://github.com/demonorez/super-superstitions-front-end) for the front end Repo.

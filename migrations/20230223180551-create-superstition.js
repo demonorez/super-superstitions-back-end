@@ -13,6 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      image: Sequelize.STRING,
       profileId: {
         type: Sequelize.INTEGER,
         allowNull: false,
